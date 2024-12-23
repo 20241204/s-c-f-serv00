@@ -2103,9 +2103,9 @@ rules:
     # 写入重启脚本
     cat <<20241204 | tee ${HOME}/s-c-f-serv00-${REPORT_DATE_S}/restart.sh >/dev/null
 # kill -9 \$(ps | grep -v grep | grep sing-box-freebsd | awk '{print \$1}')
-pkill sing-box-freebsd
+pkill sing-box-freebsd &
 # kill -9 \$(ps | grep -v grep | grep cloudflared-freebsd | awk '{print \$1}')
-pkill cloudflared-freebsd
+pkill cloudflared-freebsd &
 nohup ${HOME}/s-c-f-serv00-${REPORT_DATE_S}/sing-box-freebsd run -c ${HOME}/s-c-f-serv00-${REPORT_DATE_S}/config.json > ${HOME}/s-c-f-serv00-${REPORT_DATE_S}/sing-box.log 2>&1 & disown
 sleep 5
 nohup ${HOME}/s-c-f-serv00-${REPORT_DATE_S}/cloudflared-freebsd tunnel --edge-ip-version auto --protocol http2 run --token ${ARGO_AUTH} > ${HOME}/s-c-f-serv00-${REPORT_DATE_S}/cloudflared.log 2>&1 & disown
@@ -2319,9 +2319,9 @@ downloadFile() {
 
 killMe() {
     # kill -9 $(ps | grep -v grep | grep sing-box-freebsd | awk '{print $1}')
-    pkill sing-box-freebsd
+    pkill sing-box-freebsd &
     # kill -9 $(ps | grep -v grep | grep cloudflared-freebsd | awk '{print $1}')
-    pkill cloudflared-freebsd
+    pkill cloudflared-freebsd &
 }
 
 # 神秘的分割线
