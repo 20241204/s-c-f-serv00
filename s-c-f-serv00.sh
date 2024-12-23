@@ -2269,7 +2269,7 @@ downloadAndBuild() {
     wget -t 3 -T 10 --verbose --show-progress=on --progress=bar --no-check-certificate --hsts-file=/tmp/wget-hsts -c "${FULL_URL}" -O ${FILENAME}.tar.gz
     tar zxf ${FILENAME}.tar.gz
     cd ${FILENAME}-${VERSION#v}
-    go build ./cmd/${FILENAME}
+    go build -tags with_quic ./cmd/${FILENAME}
     mv -fv ./${FILENAME} ${HOME}/s-c-f-serv00-${REPORT_DATE_S}/${FILENAME}-$(uname -s | tr A-Z a-z)
     chmod -v u+x ${HOME}/s-c-f-serv00-${REPORT_DATE_S}/${FILENAME}-$(uname -s | tr A-Z a-z)
     cd -
