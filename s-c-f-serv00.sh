@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+set -e
+set -u
 # 起始时间
 REPORT_DATE="$(TZ=':Asia/Shanghai' date +'%Y-%m-%d %T')"
 REPORT_DATE_S="$(TZ=':Asia/Shanghai' date +%s)"
