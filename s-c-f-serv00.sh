@@ -2123,9 +2123,6 @@ nohup ${HOME}/s-c-f-serv00-${REPORT_DATE_S}/cloudflared-freebsd tunnel --edge-ip
     F_DATE="$(TZ=':Asia/Shanghai' date +'%Y-%m-%d %T')"
     F_DATE_S="$(TZ=':Asia/Shanghai' date +%s)"
     # 写入 crontab 自动化，应对服务器自动重启
-    # 查看当前 crontab
-    echo '当前 crontab'
-    crontab -l
 
     cat <<20241204 | tee ${HOME}/s-c-f-serv00-${REPORT_DATE_S}/crontab >/dev/null
 @reboot cd ${HOME}/s-c-f-serv00-${REPORT_DATE_S} ; bash restart.sh
