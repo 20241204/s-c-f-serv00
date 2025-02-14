@@ -2311,14 +2311,14 @@ downloadFile() {
     #downloadAndBuild "SagerNet/sing-box"
 
     # 方案2 直接下载 非官方 sing-box freebsd 编译成品，我本来是担心风险的，但是现在来看不得不用了
-    downloadAndExtract "20241204/sing-box-freebsd"
+    downloadAndExtract "20241204/sing-box-freebsd" "sing-box"
 
     # 本地 go 构建 cloudflared-freebsd
     # 猜想官方可能屏蔽了某些库链接，无法编译，暂时关闭，使用其他方案替代
     #downloadAndBuild "cloudflare/cloudflared"
     
     # 方案2 直接下载 非官方 cloudflare freebsd 编译成品，我本来是担心风险的，但是现在来看不得不用了
-    downloadAndExtract "robvanoostenrijk/cloudflared-freebsd"
+    downloadAndExtract "robvanoostenrijk/cloudflared-freebsd" "cloudflared"
 }
 
 
