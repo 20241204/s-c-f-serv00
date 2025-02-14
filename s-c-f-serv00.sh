@@ -2277,6 +2277,7 @@ downloadAndBuild() {
 # 方案2 直接下载 非官方 cloudflare 和 sing-box 的 freebsd 编译成品，我本来是担心风险的，但是现在来看不得不用了
 downloadAndExtract() {
     local URI=$1
+    local APPNAME=$2
     local GITHUB_URI="https://github.com/${URI}"
     local TAG_URI="/${URI}/releases/tag/"
 
@@ -2289,7 +2290,7 @@ downloadAndExtract() {
 
     # 下载并编译
     FILENAME=$(basename ${GITHUB_URI})
-    #FULL_URL=${GITHUB_URI}/releases/download/${VERSION}/cloudflared-$(uname -s | tr A-Z a-z)-$(uname -m)
+    #FULL_URL=${GITHUB_URI}/releases/download/${VERSION}/${APPNAME}-$(uname -s | tr A-Z a-z)-$(uname -m)
     FULL_URL=${GITHUB_URI}/releases/download/${VERSION}/${FILENAME}-$(uname -m)
     echo "${FULL_URL}"
     
@@ -2300,8 +2301,8 @@ downloadAndExtract() {
     fi
 
     # 下载并解压
-    wget -t 3 -T 10 --verbose --show-progress=on --progress=bar --no-check-certificate --hsts-file=/tmp/wget-hsts -c "${FULL_URL}" -O ${HOME}/s-c-f-serv00-${REPORT_DATE_S}/cloudflared-$(uname -s | tr A-Z a-z)
-    chmod -v u+x ${HOME}/s-c-f-serv00-${REPORT_DATE_S}/cloudflared-$(uname -s | tr A-Z a-z)
+    wget -t 3 -T 10 --verbose --show-progress=on --progress=bar --no-check-certificate --hsts-file=/tmp/wget-hsts -c "${FULL_URL}" -O ${HOME}/s-c-f-serv00-${REPORT_DATE_S}/${APPNAME}-$(uname -s | tr A-Z a-z)
+    chmod -v u+x ${HOME}/s-c-f-serv00-${REPORT_DATE_S}/${APPNAME}-$(uname -s | tr A-Z a-z)
 }
 
 downloadFile() {
